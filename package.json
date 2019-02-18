@@ -9,10 +9,10 @@
   "scripts": {
     "start": "node index",
     "server": "nodemon index",
-    "client-install": "npm install --prefix client",
-    "client": "npm run start --prefix client",
+    "client-install": "npm install --prefix client1",
+    "client": "npm run start --prefix client1",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client1"
   },
   "author": "Romanytsia Volodymyr",
   "license": "ISC",
