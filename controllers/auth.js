@@ -15,11 +15,7 @@ module.exports.login = async function(req, res){
                 username: candidate.username,
                 userId: candidate._id
             }, keys.jwt, {expiresIn: 360000})
-            res.status(200).json({
-                token: `Bearer ${token}`,
-                id: candidate._id,
-                username: candidate.username
-            })
+            res.send({jwt: `Bearer ${token}`, _id: candidate._id, name: candidate.username})
 
         }else{
             res.status(401).json({

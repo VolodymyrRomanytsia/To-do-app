@@ -4,11 +4,11 @@ const passport = require('passport')
 const path = require('path')
 const bodyParser = require('body-parser')
 const authRoutes = require('./routes/auth')
-const productRoutes = require('./routes/todos')
+const todosRoutes = require('./routes/todos')
 const keys = require('./config/keys')
 const app = express()
 
-mongoose.connect(keys.mongoURI)
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true })
     .then(() => console.log('MongoDB connected'))
     .catch(error => console.log(error))
 
@@ -21,7 +21,7 @@ app.use(bodyParser.json())
 app.use(require('cors')())
 
 app.use('/api/auth', authRoutes)
-app.use('/api/todos', productRoutes)
+app.use('/api/todos', todosRoutes)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/dist/client'))

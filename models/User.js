@@ -11,7 +11,24 @@ const userSchema =new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    maingoal: {
+        type: String,
+        default: null
+    },
+    todos: [ {
+        text: {
+            type: String,
+            required: true
+        },
+        resolved: {
+            type: Boolean,
+            default: false,
+            required: true
+        }    
+    }]
+        
+    
 })
 
 module.exports = mongoose.model('users', userSchema)
