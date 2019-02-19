@@ -22,14 +22,14 @@ export class AddTodo extends Component {
         const style = {background: 'transparent', 
         border: 'none',
         boxShadow: 'none',
-        height: '20px',
+        height: '25px',
         borderRadius: 0,
         color: '#fff'};
 
         const placeholder = 'New Todo';
         
         return (
-            <form onSubmit={this.onSubmit}>
+            <form  onSubmit={this.onSubmit}>
                 <Input placeholder={placeholder} 
                        style={style}
                        value={this.props.newTodoText}
