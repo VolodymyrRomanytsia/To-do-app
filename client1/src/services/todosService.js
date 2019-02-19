@@ -5,10 +5,11 @@ import auth from "./authService"
 
 const apiEndpoint = apiUrl + "/todos";
 
-http.setJwt(auth.getJwt());
+// http.setJwt(auth.getJwt());
 
 
 export function getTodos() {
+  http.setJwt(auth.getJwt());
   return http.get(`${apiEndpoint}/${auth.getId()}`)
 }
 
@@ -24,10 +25,6 @@ export function resolveTodo(_id, resolved) {
   return http.post(`${apiEndpoint}/resolve/${auth.getId()}`, {_id, resolved})
 }
 
-export function getMainGoal() {
-  return http.get(`${apiEndpoint}/maingoal/${auth.getId()}`)
-}
-
 export function createMainGoal(text) {
   return http.post(`${apiEndpoint}/maingoal/${auth.getId()}`, text)
 }
@@ -37,7 +34,6 @@ export default {
   createTodo,
   deleteTodo,
   resolveTodo,
-  getMainGoal,
   createMainGoal
 };
 
