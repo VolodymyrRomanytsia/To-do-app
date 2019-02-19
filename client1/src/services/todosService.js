@@ -5,9 +5,6 @@ import auth from "./authService"
 
 const apiEndpoint = apiUrl + "/todos";
 
-// http.setJwt(auth.getJwt());
-
-
 export function getTodos() {
   http.setJwt(auth.getJwt());
   return http.get(`${apiEndpoint}/${auth.getId()}`)

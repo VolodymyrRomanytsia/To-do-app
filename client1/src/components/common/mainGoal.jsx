@@ -47,13 +47,13 @@ class MainGoal extends Component {
             <div className="row justify-content-center mt-5">
                 <span className="h2 text-center col-12">What is your main focus for today?</span>
                 <div className='col-lg-5 col-md-7 col-sm-9 col-10'>
-                <form onSubmit={this.onSubmit}>
-                <Input 
-                       style={style}
-                       value={mainGoalText}
-                       onChange={this.onChange} 
-                       name="title"/>
-            </form>
+                    <form onSubmit={this.onSubmit}>
+                        <Input 
+                            style={style}
+                            value={mainGoalText}
+                            onChange={this.onChange} 
+                            name="title"/>
+                    </form>
                 </div>
             </div>
         );
