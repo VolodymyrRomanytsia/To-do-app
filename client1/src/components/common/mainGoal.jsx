@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import { connect } from "react-redux"
 import Input from './input'
 import * as todoActions from '../../redux/actions/todosAction';
@@ -18,6 +19,22 @@ const mapDispatchToProps = (dispatch) => {
 
 class MainGoal extends Component {
 
+    deleteMainGoal() {
+        const now = moment()
+        const currentHour = now.hour()
+        if(this.props.mappedTodoState.mainGoal !== null &&  currentHour === 24) {
+            setTimeout(() => {
+                this.props.addNewMainGoal(null)
+            }, 10000)
+            
+        }
+        else {
+            return
+        }
+        
+    }
+
+
     onSubmit = (e) => {
         e.preventDefault();
         if(this.props.mainGoalText !== ''){
@@ -33,6 +50,7 @@ class MainGoal extends Component {
     }
 
     render() { 
+        this.deleteMainGoal()
         const {mainGoal, mainGoalText} = this.props.mappedTodoState;
         const style = {background: 'transparent', 
                         border: 'none',
