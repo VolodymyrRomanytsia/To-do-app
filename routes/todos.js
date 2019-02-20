@@ -10,5 +10,4 @@ router.post('/delete/:id', passport.authenticate('jwt', {session: false}), contr
 router.get('/maingoal/:id', passport.authenticate('jwt', {session: false}), controller.getMainGoal)
 router.post('/maingoal/:id', passport.authenticate('jwt', {session: false}), controller.createMainGoal)
 
-
 module.exports = router

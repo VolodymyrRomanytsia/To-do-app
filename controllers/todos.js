@@ -80,17 +80,3 @@ module.exports.createMainGoal = async function(req, res) {
       errorHandler(res, e)
   }
 }
-
-// module.exports.deleteMainGoal = async function(req, res) {
-//   try{
-//     const { _id } = req.body
-//     const user = await User.findOneAndUpdate(
-//       {_id: req.params.id},
-//       { $pull: { todos: { "_id": _id } } },
-//       { new: true }
-//     )
-//     res.status(200).json({'success':true})
-//   }catch(e){
-//       errorHandler(res, e)
-//   }
-// }
