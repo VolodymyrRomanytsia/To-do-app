@@ -1,37 +1,35 @@
-import React, { Component } from 'react';
-import { Route, Redirect, Switch } from 'react-router'
+import React, { Suspense, lazy } from 'react';
+import { Route, Redirect, Switch } from 'react-router';
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import './App.css';
-import RegisterForm from './components/registerForm'
-import LoginForm from './components/loginForm'
-import TodosApp from './components/todosApp'
+import RegisterForm from './components/registerForm';
+import LoginForm from './components/loginForm';
 import NotFound from "./components/notFound";
-import ProtectedRoute from './components/common/protectedRoute'
+import ProtectedRoute from './components/common/protectedRoute';
+const Todos = lazy(() => import('./components/todosApp')); 
 
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
       <BrowserRouter> 
-        <React.Fragment>
+        <Suspense fallback={<div>Loading...</div>}>
           <ToastContainer />
           <main className="container margin-top text-white">
             <Switch>
               <Route path="/register" component={RegisterForm} />
               <Route path="/login" component={LoginForm} />
-              <ProtectedRoute path="/todos" component={TodosApp} />
+              <ProtectedRoute path="/todos" component={Todos} />
               
               <Route path="/not-found" component={NotFound} />
               <Redirect from="/" exact to="/login" />
               <Redirect to="/not-found" />
             </Switch>
           </main>
-        </React.Fragment>
+        </Suspense>
       </BrowserRouter> 
     );
   }
-}
 
 export default App;
